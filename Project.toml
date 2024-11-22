@@ -1,9 +1,25 @@
 name = "DCFI"
 uuid = "0ac046c5-e89f-4081-81ed-1b02434f8bfe"
 authors = ["Ewout van der Veer"]
-version = "1.0.0-DEV"
+version = "1.0.1"
+
+[deps]
+AbstractFFTs = "621f4979-c628-5d54-868e-fcf4e3e8185c"
+Compat = "34da2185-b29b-5c13-b0c7-acf172513d20"
+FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+SubpixelRegistration = "97a7e826-69e2-510e-8af8-254736c4b599"
 
 [compat]
+AbstractFFTs = "1.5.0"
+Compat = "3.47.0"
+FFTW = "1.8.0"
+Images = "0.26.1"
+LinearAlgebra = "1.11.0"
+Statistics = "1.11.1"
+SubpixelRegistration = "0.4.0"
 julia = "1.6.7"
 
 [extras]
