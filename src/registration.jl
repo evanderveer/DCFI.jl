@@ -279,8 +279,10 @@ end
 
 function register_integrate(image_cube::Array{<:Real}; kwargs...)
     image_cube_reg = coregister(image_cube, dims=3; kwargs...)
-    mean(image_cube_reg, dims=3)[:,:, firstindex(image_cube_reg, 3)]
+    integrate(image_cube_reg)
 end
+
+integrate(cube::Array{<:Real, 3}) = mean(cube, dims=3)[:,:, firstindex(cube, 3)]
 
 function register(image_cube::Array{<:Real}; kwargs...)
     coregister(image_cube, dims=3; kwargs...)

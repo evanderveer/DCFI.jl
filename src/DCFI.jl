@@ -2,20 +2,23 @@ module DCFI
 
 export load_image_series, register, register_integrate, save_image
 
-import Images: load, save, clamp01nan
+import Images: load, save, clamp01nan, imgradients, Gray, KernelFactors
 import LinearAlgebra: svd, Diagonal
-import Base: round
+import Base: round, /, *, -, +
 import Statistics: mean
+import StaticArrays: SVector
+using RegisterDeformation
 
 include("registration.jl")
+include("nonrigid.jl")
 
 function load_image_series(images::AbstractVector{String})
-    first_image = Float64.(load(images[1]))
+    first_image = Float64.(load(images[1]))::Matrix{Float64}
     image_cube = Array{Float64}(undef, size(first_image)..., length(images))
     image_cube[:,:,1] .= first_image
 
     for (idx,im) in enumerate(images[2:end])
-        image_cube[:,:,idx+1] .= Float64.(load(im))
+        image_cube[:,:,idx+1] .= Float64.(load(im))::Matrix{Float64}
     end
 
     image_cube
